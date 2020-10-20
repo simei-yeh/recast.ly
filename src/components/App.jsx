@@ -15,8 +15,16 @@ class App extends React.Component {
   }
   //event handler
   // change state.currentVideo to video that is clicked
+  onVideoEntryClick(vid) {
+
+    this.setState({
+      // grab index to selected video in exampleVideoData array
+      currentVideo: vid
+    });
+  }
 
   render() {
+
     return (
       <div>
         <nav className="navbar">
@@ -26,10 +34,10 @@ class App extends React.Component {
         </nav>
         <div className="row">
           <div className="col-md-7">
-            <div><h5><em>videoPlayer</em><VideoPlayer video={this.state.currentVideo}/></h5></div>
+            <div><VideoPlayer video={this.state.currentVideo} /></div>
           </div>
           <div className="col-md-5">
-            <div><h5><em>videoList</em> <VideoList videos={this.state.allVideos}/></h5></div>
+            <div><VideoList videos={this.state.allVideos} onClick={this.onVideoEntryClick.bind(this)}/></div>
           </div>
         </div>
       </div>
